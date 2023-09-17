@@ -3,7 +3,6 @@ package parse
 import (
 	"encoding/json"
 	"fmt"
-	"log"
 	"os"
 
 	"r-post/request"
@@ -34,7 +33,7 @@ func GetResp(url, path string) (string, error) {
 	// Чтение файла.
 	file, err := ReadFile(path)
 	if err != nil {
-		log.Fatalln(err)
+		return "", fmt.Errorf("не нашел такой файл")
 	}
 
 	//// Парсинг входящего json в структуру.

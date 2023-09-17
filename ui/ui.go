@@ -1,7 +1,6 @@
 package ui
 
 import (
-	"fmt"
 	"image/color"
 
 	"fyne.io/fyne/v2"
@@ -29,7 +28,7 @@ func UrlDesc() *canvas.Text {
 
 func Url() *widget.Entry {
 	url := widget.NewEntry()
-	url.SetText("localhost:8000/execute")
+	url.SetText("localhost:8080/execute")
 	url.Resize(fyne.NewSize(600, 40))
 	url.Move(fyne.NewPos(105, 50))
 
@@ -38,10 +37,7 @@ func Url() *widget.Entry {
 
 func FileBtn(filePath *widget.Entry, w fyne.Window) *widget.Button {
 	file := widget.NewButton("Browse", func() {
-		dialog.ShowFileOpen(func(f fyne.URIReadCloser, err error) {
-			if err != nil {
-				fmt.Println("11111111111")
-			}
+		dialog.ShowFileOpen(func(f fyne.URIReadCloser, _ error) {
 			filePath.SetText(f.URI().Path())
 		}, w)
 	})
